@@ -1,0 +1,111 @@
+.App {
+  justify-content: center;
+  color: #4e4c4c;
+}
+.root{
+  display: flex;
+}
+.title{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 30px;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.container {
+  padding: 10px;
+  width: 70%;
+  background: #fff;
+  margin: 40px auto;
+}
+
+.box-container {
+  position: relative;
+}
+.box-container:before,
+.box-container:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width: 300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.box-container:after {
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+.menu-label {
+  background: #545454;
+  padding: 10px;
+  color: #f7f7f7;
+}
+.selection-container {
+  margin-top: 10px;
+}
+.option-container {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+.option-container:hover {
+  background: #e2e2e2;
+  color: #616161;
+}
+.selected-option {
+  background: #4f8592;
+  color: #ffffff;
+}
+.disabled {
+  opacity: 0.3;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
