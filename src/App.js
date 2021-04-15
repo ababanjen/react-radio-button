@@ -32,10 +32,7 @@ function App() {
   const ruleChecker = (tId, vId) => {
     const typeId = parseInt(tId);
     const VariantId = parseInt(vId);
-    setRestrictedOptions([
-      ...rules[typeId],
-      ...[VariantId ? rules[VariantId] : []],
-    ]);
+    setRestrictedOptions(rules[typeId].concat(vId ? rules[VariantId] : []));
   };
 
   function isMenuDisabled({ index, id }) {
@@ -46,21 +43,17 @@ function App() {
     }
   }
 
-  function getOptionSetter(menuId) {
-    return menuId === 0
-      ? setSelectedType
-      : menuId === 1
-      ? setSelectedVariant
-      : setSelectedTopping;
-  }
+  const getValue = (id, val1, val2, val3) =>
+    id === 0 ? val1 : id === 1 ? val2 : val3;
 
-  function getOptionValue(menuId) {
-    return menuId === 0
-      ? selectedType
-      : menuId === 1
-      ? selectedVariant
-      : selectedToping;
-  }
+  const getOptionSetter = (menuId) =>
+    getValue(menuId, setSelectedType, setSelectedVariant, setSelectedTopping);
+
+  const getOptionValue = (menuId) =>
+    getValue(menuId, selectedType, selectedVariant, selectedToping);
+
+  const getTypeLabel = (menuId) =>
+    getValue(menuId, "Select type", "Select Variant", "Select Toppings");
 
   function handleSelectOption({
     event: {
@@ -82,12 +75,7 @@ function App() {
       </div>
       <div className="root">
         {menus?.map((menu, index) => {
-          const menuType =
-            index === 0
-              ? "Select type"
-              : index === 1
-              ? "Select Variant"
-              : "Select Toppings";
+          const menuType = getTypeLabel(index);
           return (
             <div
               key={`${menuType}-${index}`}
